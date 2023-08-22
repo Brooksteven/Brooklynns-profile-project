@@ -36,6 +36,11 @@ li {
     flex: 1;
 }
 
+/*add padding to my technology stack section*/
+.container {
+    padding: 50px 0;
+}
+
 /* this stops the container from expanding the entire width of the page.
 Here we will cap the width. We do width: 100% because we don't want to hard code and so this section will stay responsive.*/
 .row {
@@ -50,6 +55,16 @@ Here we will cap the width. We do width: 100% because we don't want to hard code
 .text--purple {
     color: #6030b1;
 }
+
+/*for every second section there will be a gray background color*/
+section:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+
+  /* margin under "This is my technology stack title"*/
+  .section__title {
+    margin-bottom: 20px;
+  }
 
 /* NAVIGATION BAR */
 
@@ -199,6 +214,50 @@ the picture 100% width of its parent*/
     margin-top: 72px;
 }
 
+/*target the img and make the width 100% of the parent*/
 .about-me__img {
     width:100%;
+}
+
+/*
+TECH - STACK 
+*/
+
+/*target the img ad make it responsive*/
+.language__img {
+    width: 100%;
+    max-width: 100px;
+}
+
+/*hover effect on tech images*/
+.language__img:hover {
+    /*this makes the symbol dark/black or bright when hovering over it*/
+    filter: brightness(80%);
+    /*this will determie if the img will disappear or still be preset whe hovering over it*/
+    opacity: 0.86;
+    /*this determines if the img will get bigger or smaller when you hover over it*/
+    transform: scale(0.9);
+}
+
+.language {
+    width: 25%;
+}
+.language__img--wrapper {
+    /*center it in the 25% width*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 26px 16px;
+    /*25% of the container*/
+    /*move this to .language, which is the parent, instead to change the size of the img boxes
+    width: 25%; */
+}
+
+/*display flex to stack the tech images horizontally*/
+.language__list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /*the language__img--wrapper isn't the entire width of the page so the images are going to be small
+    to fix this we have to */
 }
