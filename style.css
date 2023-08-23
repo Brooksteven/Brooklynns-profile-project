@@ -229,8 +229,9 @@ TECH - STACK
     max-width: 100px;
 }
 
+
 /*hover effect on tech images*/
-.language__img:hover {
+.language:hover .language__img {
     /*this makes the symbol dark/black or bright when hovering over it*/
     filter: brightness(80%);
     /*this will determie if the img will disappear or still be preset whe hovering over it*/
@@ -241,6 +242,11 @@ TECH - STACK
 
 .language {
     width: 25%;
+    display: flex;
+    /*centers the language text*/
+    justify-content: center;
+    /*this makes the img text bottom: 0 (language__name) position relative to its parent, if not it will be bottom: 0 the page*/
+    position: relative;
 }
 .language__img--wrapper {
     /*center it in the 25% width*/
@@ -261,3 +267,22 @@ TECH - STACK
     /*the language__img--wrapper isn't the entire width of the page so the images are going to be small
     to fix this we have to */
 }
+
+/*we don't want the language__name class to be aprt of the actual img box so we can target the language__name to separate and style it individually*/
+.language__name {
+    /*separates it from the actual image box and not affecting the parents size*/
+    position: absolute;
+    bottom: 0;
+    transform: scale(0);
+    /*makes the hover transitio smooth*/
+    transition: all 300ms;
+    font-size: 20px;
+    /*the animation fades in smoothly*/
+    opacity: 0;
+}
+
+.language:hover .language__name {
+    transform: scale(1);
+    opacity: 1;
+}
+
