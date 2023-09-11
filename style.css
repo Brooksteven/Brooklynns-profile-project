@@ -286,3 +286,259 @@ TECH - STACK
     opacity: 1;
 }
 
+/* PROJECTS */
+
+/*this puts space under every project to create more 
+appealing space between them*/
+.project {
+    margin-bottom: 135px;
+  }
+  
+  /*doing the project "last child" at margin-bottom: 40px;
+  takes away the large space that was originaly at the bottom
+  of the page.*/
+  .project:last-child {
+    margin-bottom: 40px;
+  }
+  
+  .project__img {
+    width: 100%;
+    /*this connects to ".project:hover .project__img" and makes the transition 
+    of the zooming in and blur to transition smoothly */
+    transition: all 500ms ease;
+  }
+  
+  /*this the parent of the project boxes*/
+  /*box shadow creates a shadow around the project boxes*/
+  /*OVERFLOW: HIDDEN IS POWERFUL FOR CSS, ESPECIALLY IMGS WITHIN CONTAINERS
+  OVERFLOW: HIDDEN WILL ALLOW THE over flow from the img to be hidden so 
+  when using border-radius: 20px; the edges/corners will be able to become round*/
+  /*DISPLAY: FLEX  allows the img to be the same size as thre parent it is fitting in*/
+  /*also always position images relative to it's parent*/
+  .project__wrapper {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /*this is for the hover effect on the images*/
+  /*THIS IS A PSEUDO CLASS(project__wrapper) THAT HAS A PSUEDO SELECTOR (before)*/
+  /*Pseudo classes always need content: ""; even if there is nothing in it*/
+  /*Pseudo classes also always need "position: absolute" so this pseudo class doesn't effect to the position
+  of anything*/ 
+
+  /*You have to put pseudo classes height and width 100% of it's parent which is "project__wrapper"*/
+  .project__wrapper:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1d25;
+    /*the opacity at zero is the default of the container which will show the hover invisible when hovering over it*/
+    opacity: 0;
+    /*makes a smoother transition when hovering over it*/
+    transition: all 450ms ease;
+    /*z-index is important when using hover affects a z-i9ndex of 1 will cover the first
+    thing in the container i.e. the image*/
+    /*z-index 0 wont show the background color and will stay behind image, 1-3 will, and 4 will overlap and come infornt of everything including text,*/
+    z-index: 1;
+    transform: translateY(100%);
+  }
+
+  /*this connects with the opacity in "project__wrapper:before"*/
+  .project:hover .project__wrapper:before {
+    transform: translateY(0);
+    /*the opacity will now show visibility when hovering over it*/
+    opacity: 0.7;
+  }
+
+  /*this scale will cause the img to zoom in when hovering over it and the 
+  filter: blur(x) will cause it to blur*/
+  .project:hover .project__img {
+    transform: scale(1.07);
+    filter: blur(5px);
+  }
+  
+  /*we only want to see the text when we hover over the project.
+  however before this styling below the text/description would show up on the image
+  without the hover background so we do opacity 1 on project:hover and do opacity: 0
+  on .project__description to prevent this*/
+  .project:hover .project__description {
+    /*now we will see the project description*/
+    opacity: 1;
+    /*this makes the text come from the bottom of the image*/
+    transform: translateY(-50%);
+  }
+  
+  /*this puts space between list containers/images, it also creates space between the header (here are some of my projects) for the unordered list
+  and the first img project*/
+  .project__list {
+    padding-top: 40px;
+  }
+  
+
+  /*This is for the text on top of the hover*/
+  .project__description {
+    /*do position: absolute to make the text independent from everything and only on the parent*/
+    position: absolute;
+    /*now center the text*/
+    top: 50%;
+    left: 90px;
+    /*transform: translateY(-50%) puts the description in the center
+    while transform: translateY(100%) will put the scription a little further down*/
+    transform: translateY(100%);
+    max-width: 550px;
+    /*the background img is a z-index of 2 so to make the text visible
+    we have to bring it on top of the hover background and make the z-index a 3*/
+    z-index: 3;
+    /*text description wont show when hovering background isn't there with opacity: 0. look at project:hover .project__description*/
+    opacity: 0;
+    /*this transition is for the opacity*/
+    /*transform 450ms will make the text come from the bottom of the image 
+    when you pair it with transformY(-50%) in ".project:hover .project__description" 
+    and transform: translateY(100%) under .project__description*/
+    transition: transform 450ms, opacity 300ms;
+  }
+  
+  .project__description--title {
+    font-size: 40px;
+  }
+  
+  /*add space to the top and bottom (16px) and 0 left and right of paragraph*/
+  .project__description--para {
+    margin: 16px 0;
+  }
+  
+  .project__description--link {
+    font-size: 20px;
+    margin-right: 16px;
+  }
+  
+  /*push the text to the left*/
+  .project__description--title,
+  .project__description--sub-title,
+  .project__description--para,
+  .project__description--link {
+    text-align: left;
+    color: #fff;
+  }
+  
+  /* FOOTER */
+  
+  footer {
+    background-color: #242424;
+  }
+  
+  .footer__social--list {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 28px;
+  }
+  .footer__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8% 0;
+  }
+  
+  .footer__logo--img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .footer__social--link,
+  .footer__copyright,
+  .footer__logo--popper {
+    color: #fff;
+  }
+  
+  .footer__logo--popper {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+  
+  .footer__anchor {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .footer__anchor:hover .footer__logo--popper {
+    transform: translateX(60px);
+    opacity: 1;
+  }
+  
+  /* Small phones, tablets, large smartphones */
+  @media (max-width: 768px) {
+    nav {
+      height: 68px;
+    }
+  
+    h1 {
+      font-size: 28px;
+    }
+  
+    .about-me__info--para {
+      font-size: 18px;
+    }
+  
+    .language {
+      width: calc(100% / 3);
+    }
+  
+    .project__description--para {
+      font-size: 14px;
+    }
+  
+    .project__description {
+      left: 30px;
+      padding-right: 30px;
+    }
+  }
+  
+  /* SMALL PHONES */
+  @media (max-width: 480px) {
+    .nav__link:not(:last-child) {
+      display: none;
+    }
+  
+    .project__wrapper {
+      border-radius: 0;
+    }
+  
+    .project__description {
+      padding: 0;
+      left: 0;
+      width: 100%;
+    }
+  
+    .project__description--para {
+      display: none;
+    }
+  
+    .project__description--links {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .project__description--title {
+      font-size: 32px;
+      line-height: 1;
+      text-align: center;
+    }
+  
+    .project__description--sub-title {
+      text-align: center;
+      margin: 12px 0;
+    }
+  }
