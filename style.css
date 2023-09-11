@@ -429,6 +429,7 @@ appealing space between them*/
   
   /* FOOTER */
   
+  /*background color for footer*/
   footer {
     background-color: #242424;
   }
@@ -440,14 +441,19 @@ appealing space between them*/
     justify-content: space-around;
     margin-bottom: 28px;
   }
+
+  /*add padding to top and bottom but make it a percentage value so it will be responsive to when minimizing the page*/
   .footer__row {
+    /*This puts my logo and links side by side to one another*/
     display: flex;
+    /*This puts them on top of each other*/
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 8% 0;
   }
   
+  /*The image of my logo will be huge so this will change the size*/
   .footer__logo--img {
     width: 70px;
     height: 70px;
